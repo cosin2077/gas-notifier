@@ -14,18 +14,25 @@ async function checkGasPrice() {
   const gasPrice = await provider.getGasPrice();
   const gasPriceInGwei = ethers.utils.formatUnits(gasPrice, 'gwei');
   const result = await chrome.storage.local.get('notificationGas')
-  console.log("Value currently is ", result.notificationGas);
-  chrome.action.setBadgeText({ text: Math.trunc(Number(gasPriceInGwei)) + '' });
-  if (result.notificationGas) {
-
+  chrome?.action?.setBadgeText({ text: Math.trunc(Number(gasPriceInGwei)) + '' });
+  if (Number(gasPriceInGwei) < Number(result.notificationGas)) {
+    console.log(`gasPriceInGwei < result.notificationGas!`)
+    chrome.notifications.create('lowGas', {
+      type: 'basic',
+      iconUrl: '../assets/icon.png',
+      title: 'Gas Price Alert',
+      message: `Gas price is lower than ${result.notificationGas} Gwei`
+    });
   }
 }
 
 checkGasPrice()
+const checkGap =  5 * 60 // check every 5 minutes
 const asyncSetInterval = async (fn: any, delay = 40 * 1e3) => {
   await fn();
   setTimeout(() => {
-    asyncSetInterval(checkGasPrice, 30 * 1e3);
+    asyncSetInterval(checkGasPrice, checkGap * 1e3);
   }, delay)
 }
-asyncSetInterval(checkGasPrice, 30 * 1e3);
+
+asyncSetInterval(checkGasPrice, checkGap * 1e3);
