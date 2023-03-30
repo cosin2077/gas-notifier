@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
 
-  "name": "Chrome Extension TypeScript Starter",
-  "description": "Chrome Extension, TypeScript, Visual Studio Code",
+  "name": "ethereum gas checker",
+  "description": "when getting low gas, send notification to you!",
   "version": "1.0",
 
   "options_ui": {
