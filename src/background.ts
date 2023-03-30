@@ -14,6 +14,7 @@ async function checkGasPrice() {
   const gasPrice = await provider.getGasPrice();
   const gasPriceInGwei = ethers.utils.formatUnits(gasPrice, 'gwei');
   const result = await chrome.storage.local.get('notificationGas')
+
   chrome?.action?.setBadgeText({ text: Math.trunc(Number(gasPriceInGwei)) + '' });
   if (Number(gasPriceInGwei) < Number(result.notificationGas)) {
     console.log(`gasPriceInGwei < result.notificationGas!`)
@@ -31,7 +32,7 @@ const checkGap =  5 * 60 // check every 5 minutes
 const asyncSetInterval = async (fn: any, delay = 40 * 1e3) => {
   await fn();
   setTimeout(() => {
-    asyncSetInterval(checkGasPrice, checkGap * 1e3);
+    asyncSetInterval(fn, delay);
   }, delay)
 }
 
