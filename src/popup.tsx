@@ -30,7 +30,7 @@ const Popup = () => {
     <div className="container">
       <span>Please input your notification gas value:</span>
       <input value={value} onChange={handleChange} />
-      <button onClick={() => saveGas()}>save up</button>
+      <button onClick={() => saveGas()}>save</button>
     </div>
   );
 };
