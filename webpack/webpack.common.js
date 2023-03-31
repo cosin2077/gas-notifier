@@ -1,6 +1,8 @@
 const webpack = require("webpack");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // installed via npm
+
 const srcDir = path.join(__dirname, "..", "src");
 
 module.exports = {
@@ -44,5 +46,6 @@ module.exports = {
             patterns: [{ from: ".", to: "../", context: "public" }],
             options: {},
         }),
+        new CleanWebpackPlugin({ verbose: true })
     ],
 };

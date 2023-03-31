@@ -9,7 +9,7 @@
     "clean": "rimraf dist",
     "test": "npx jest",
     "style": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "serve": "serve dist"
+    "build:chrome": "npm run build && tar -zcvf dist.zip dist"
   },
   "author": "",
   "license": "MIT",
@@ -27,6 +27,7 @@
     "@types/jest": "^27.0.2",
     "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",
+    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.7.3",
     "glob": "^7.1.6",
