@@ -4,11 +4,7 @@ import "./style/popup.css";
 import './common'
 const Popup = () => {
   const getSaveGas = async () => {
-    const result: Record<string, any> = await new Promise((resolve) => {
-      chrome.storage.local.get("notificationGas", (result) => {
-        resolve(result);
-      });
-    });
+    const result= await chrome.storage.local.get("notificationGas")
     return result.notificationGas || "";
   };
   const [value, setValue] = useState("");
@@ -25,10 +21,9 @@ const Popup = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target?.value);
   };
-  const saveGas = () => {
-    chrome.storage.local.set({ notificationGas: value }, () => {
-      console.log("notificationGas is set to " + value);
-    });
+  const saveGas = async () => {
+    await chrome.storage.local.set({ notificationGas: value });
+    console.log("notificationGas is set to " + value);
   };
   return (
     <div className="container">

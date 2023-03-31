@@ -15,19 +15,18 @@ async function checkGasPrice() {
   console.log('checkGasPrice...')
   const gasPrice = await provider.getGasPrice();
   const gasPriceInGwei = ethers.utils.formatUnits(gasPrice, 'gwei');
-  chrome?.browserAction?.setBadgeText({ text: Math.trunc(Number(gasPriceInGwei)) + '' });
+  chrome?.action?.setBadgeText({ text: Math.trunc(Number(gasPriceInGwei)) + '' });
 
-  chrome.storage.local.get('notificationGas', (result) => {
-    if (Number(gasPriceInGwei) < Number(result.notificationGas)) {
-      console.log(`gasPriceInGwei < result.notificationGas!`)
-      chrome.notifications.create('lowGas', {
-        type: 'basic',
-        iconUrl: '../assets/icon.png',
-        title: 'Gas Price Alert',
-        message: `Gas price is lower than ${result.notificationGas} Gwei`
-      });
-    }
-  })
+  const result = await chrome.storage.local.get('notificationGas')
+  if (Number(gasPriceInGwei) < Number(result.notificationGas)) {
+    console.log(`gasPriceInGwei < result.notificationGas!`)
+    chrome.notifications.create('lowGas', {
+      type: 'basic',
+      iconUrl: '../assets/gas_128.png',
+      title: 'Gas Price Alert',
+      message: `Gas price:${Number(gasPriceInGwei).toFixed(0)} is lower than ${result.notificationGas} Gwei`
+    });
+  }
 }
 
 checkGasPrice()
