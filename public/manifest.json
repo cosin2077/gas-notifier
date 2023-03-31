@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "ethereum gas checker",
   "description": "when getting low gas, send notification to you!",
   "version": "1.0",
@@ -11,8 +11,12 @@
   "options_ui": {
     "page": "options.html"
   },
-  "action": {
-    "default_icon": "icon.png",
+  "browser_action": {
+    "default_icon": {
+      "19": "./assets/icon.png",
+      "38": "./assets/icon.png"
+    },
+    "default_title": "gas-checker",
     "default_popup": "popup.html"
   },
   "content_scripts": [
@@ -27,7 +31,10 @@
     }
   ],
   "background": {
-    "service_worker": "js/background.js"
+    "scripts": [
+      "js/background.js"
+    ],
+    "persistent": true
   },
   "permissions": [
     "storage",
