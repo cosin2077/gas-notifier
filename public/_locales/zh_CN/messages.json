@@ -1,0 +1,11 @@
+
+{
+  "appName": {
+    "message": "以太坊gas通知器",
+    "description": "以太坊gas通知器"
+  },
+  "appDesc": {
+    "message": "以太坊gas通知器，你可以设置gas值，当以太坊gas到达设定值时，会给你发送浏览器通知",
+    "description": "以太坊gas通知器，你可以设置gas值，当以太坊gas到达设定值时，会给你发送浏览器通知"
+  }
+}

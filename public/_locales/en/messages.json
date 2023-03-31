@@ -1,0 +1,11 @@
+
+{
+  "appName": {
+    "message": "ethereum gas checker",
+    "description": "ethereum gas checker"
+  },
+  "appDesc": {
+    "message": "ethereum gas checker,gas tracker, notify you when hitting your setting gas price",
+    "description": "ethereum gas checker,gas tracker, notify you when hitting your setting gas price"
+  }
+}

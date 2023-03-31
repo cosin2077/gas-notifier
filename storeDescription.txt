@@ -1,0 +1,8 @@
+The Chrome extension is called "ethereum gas checker" and its main function is to help web3 users track real-time gas prices and set notifications to achieve the best active benefits.
+
+Upon opening the extension, the current gas price will be displayed, and users can customize the desired gas price limit through the settings interface to receive notifications when the gas reaches their setting.
+
+When the user's set gas price reaches the real-time latest gas price, the extension will automatically send a browser notification to remind the user.
+
+"ethereum gas checker" is a convenient and easy-to-use tool that can help Ethereum traders better control costs and get a better trading experience.
+

@@ -30,7 +30,7 @@ async function checkGasPrice() {
 }
 
 checkGasPrice()
-const checkGap = 5 * 60 // check every 5 minutes
+const checkGap = 3 * 60 // check every 3 minutes
 const asyncSetInterval = async (fn: any, delay = 40 * 1e3) => {
   try {
     await fn();
