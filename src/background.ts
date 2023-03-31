@@ -1,5 +1,7 @@
 import { ethers } from 'ethers';
 
+import './common'
+
 const apiList = [
   "https://eth-mainnet.g.alchemy.com/v2/3tZewOsSuJNKZq9CTdykN5fstJ7Dc-xE",
   "https://eth-mainnet.public.blastapi.io/",
@@ -29,7 +31,7 @@ async function checkGasPrice() {
 }
 
 checkGasPrice()
-const checkGap = 1 * 60 // check every 5 minutes
+const checkGap = 5 * 60 // check every 5 minutes
 const asyncSetInterval = async (fn: any, delay = 40 * 1e3) => {
   try {
     await fn();

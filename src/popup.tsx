@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./style/popup.css";
-
+import './common'
 const Popup = () => {
   const getSaveGas = async () => {
     const result: Record<string, any> = await new Promise((resolve) => {
