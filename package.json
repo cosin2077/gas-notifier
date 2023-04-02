@@ -1,7 +1,7 @@
 {
-  "name": "chrome-extension-typescript-starter",
-  "version": "1.0.0",
-  "description": "chrome-extension-typescript-starter",
+  "name": "ethereum-gas-checker",
+  "version": "0.1.0",
+  "description": "ethereum-gas-checker",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",
@@ -9,7 +9,7 @@
     "clean": "rimraf dist",
     "test": "npx jest",
     "style": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "build:chrome": "npm run build && tar -zcvf dist.zip dist"
+    "build:chrome": "npm run build && tar -zcvf dist.zip dist/*"
   },
   "author": "",
   "license": "MIT",
