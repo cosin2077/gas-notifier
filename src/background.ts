@@ -11,22 +11,26 @@ const apiList = [
 const randomRpc = () => apiList[Math.trunc(Math.random() * apiList.length) % apiList.length]
 async function checkGasPrice() {
 
-  const provider = new ethers.providers.JsonRpcProvider(randomRpc())
-  console.log('checkGasPrice...')
-  const gasPrice = await provider.getGasPrice();
-  const gasPriceInGwei = ethers.utils.formatUnits(gasPrice, 'gwei');
-  console.log(`gasPriceInGwei: ${gasPriceInGwei}`)
-  chrome?.action?.setBadgeText({ text: Math.trunc(Number(gasPriceInGwei)) + '' });
+  try {
+    const provider = new ethers.providers.JsonRpcProvider(randomRpc())
+    console.log('checkGasPrice...')
+    const gasPrice = await provider.getGasPrice();
+    const gasPriceInGwei = ethers.utils.formatUnits(gasPrice, 'gwei');
+    console.log(`gasPriceInGwei: ${gasPriceInGwei}`)
+    chrome?.action?.setBadgeText({ text: Math.trunc(Number(gasPriceInGwei)) + '' });
 
-  const result = await chrome.storage.local.get('notificationGas')
-  if (Number(gasPriceInGwei) < Number(result.notificationGas)) {
-    console.log(`gasPriceInGwei < result.notificationGas!`)
-    chrome.notifications.create('lowGas', {
-      type: 'basic',
-      iconUrl: '../assets/gas_128.png',
-      title: 'Gas Price Alert',
-      message: `Gas price:${Number(gasPriceInGwei).toFixed(0)} is lower than ${result.notificationGas} Gwei`
-    });
+    const result = await chrome.storage.local.get('notificationGas')
+    if (Number(gasPriceInGwei) < Number(result.notificationGas)) {
+      console.log(`gasPriceInGwei < result.notificationGas!`)
+      chrome.notifications.create('lowGas', {
+        type: 'basic',
+        iconUrl: '../assets/gas_128.png',
+        title: 'Gas Price Alert',
+        message: `Gas price:${Number(gasPriceInGwei).toFixed(0)} is lower than ${result.notificationGas} Gwei`
+      });
+    }
+  } catch (err) {
+    console.log((err as Error).message)
   }
 }
 
