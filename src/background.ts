@@ -7,6 +7,16 @@ const apiList = [
   "https://eth-mainnet.public.blastapi.io/",
   "https://cloudflare-eth.com/",
   "https://rpc.ankr.com/eth",
+  'https://eth.llamarpc.com',
+  'https://ethereum.blockpi.network/v1/rpc/public',
+  'https://ethereum.publicnode.com',
+  'https://endpoints.omniatech.io/v1/eth/mainnet/public',
+  'https://1rpc.io/eth',
+  'https://rpc.builder0x69.io',
+  'https://rpc.flashbots.net',
+  'https://eth-rpc.gateway.pokt.network',
+  'https://rpc.payload.de',
+  'https://api.zmok.io/mainnet/oaen6dy8ff6hju9k',
 ]
 const randomRpc = () => apiList[Math.trunc(Math.random() * apiList.length) % apiList.length]
 async function checkGasPrice() {
